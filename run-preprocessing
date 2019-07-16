@@ -1,0 +1,20 @@
+#!/bin/bash
+#
+# run preprocessing using fmriprep
+#
+# Submits frmiprep job to the condor cluster
+#
+# (c) Mona Garvert <garvert@cbs.mpg.de>  June 2019
+
+
+executable = /afs/cbs.mpg.de/software/scripts/envwrap
+arguments = /data/pt_02071/choice-maps/preprocessed_data/sub-SUBJID/scripts/run-fmriprep_sub-SUBJID.sh
+universe = vanilla
+output = /data/pt_02071/choice-maps/preprocessed_data/sub-SUBJID/output/sub-SUBJID_test.out 
+error = /data/pt_02071/choice-maps/preprocessed_data/sub-SUBJID/output/sub-SUBJID_test.error
+log = /data/pt_02071/choice-maps/preprocessed_data/sub-SUBJID/output/sub-SUBJID_test.log
+request_memory = 75000
+request_cpus = 2 
+getenv = True
+notification = Error
+queue
