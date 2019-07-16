@@ -1,0 +1,11 @@
+% Generate participants.tsv
+
+
+savedir = '/data/tu_garvert_cloud/owncloud-gwdg/Projects/ChoiceMaps/experiment/version_scan/datafiles/merged_data';
+table(1,:) = ['participant_id', 'age', 'sex'];
+
+for subj = 1:150
+    disp(subj)
+    load([savedir,'/subj_',num2str(subj),'/data_',num2str(subj)])
+    table(subj+1,:) = [['sub-',num2str(subj)], data.viz.age upper(data.viz.gender)];
+end
