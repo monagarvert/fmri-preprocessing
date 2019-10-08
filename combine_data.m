@@ -1,6 +1,6 @@
 % combine data
 clear all
-subj = 125;
+subj = 152;
 
 pc = 'linux';
 if strcmp(pc,'dell')
@@ -13,7 +13,9 @@ else
     savedir = '/data/g_gr_doeller-share/Experiments/Mona/ChoiceMaps/experiment/version_scan/datafiles/merged_data';
 end
 
-initials = {'tl','hw','jk','lp','km','sr','jh', 'tb', 'pq','mb','mh','lm','jp','nt','to','lu','ag','pk','ls','bs','cd','ao','lz','ei','av'};
+initials = {'tl','hw','jk','lp','km','sr','jh', 'tb', 'pq','mb','mh','lm','jp','nt','to','lu','ag','pk','ls','bs','cd','ao','lz','ei','av','cs','pm',...
+    'cz','pa','ms','ss','cf','pj','jl','aa','am','cs','nb','rh','fa','jz','fk','ah','jm','ks','cn','lt','aw','dh', 'ss', 'ps', 'ab'};
+
 prepost = {'pre','post'};
 switch subj
     case 101
@@ -161,6 +163,29 @@ switch subj
         data.viz.session_1.pre.freeExplore.run_2 = viz12.session_1.pre.freeExplore.run_1;
         data.viz.session_1.pre.freeExplore.run_3 = viz12.session_1.pre.freeExplore.run_2;
         
+        viz11 = loadjson([datadir,'Subj_',num2str(subj),'/session_1/data_',num2str(subj),'_1_pre_',init_sess2_vizials{subj-100},'_viz.txt']);
+        data.viz.session_1.pre.freeExplore.run_1 = viz11.session_1.pre.freeExplore.run_1;
+        
+        data.mat{2} = load([datadir,'Subj_',num2str(subj),'/session_2/data_',num2str(subj),'_2_',initials{subj-100},'.mat']);
+        data.mat{3} = load([datadir,'Subj_',num2str(subj),'/session_3/data_',num2str(subj),'_3_',initials{subj-100},'.mat']);
+        
+        post = load([datadir,'Subj_',num2str(subj),'/session_3/data_',num2str(subj),'_3_',initials{subj-100},'_postscan.mat']);
+        
+        data.likert             = post.data.likert;
+        data.value_rating       = post.data.value_rating;
+        data.arena_similarity   = post.data.arena_similarity;
+        data.arena_space        = post.data.arena_space;
+    
+    case 132
+        session = 3;
+        try
+            data.viz = loadjson([datadir,'Subj_',num2str(subj),'/session_',num2str(session),'/data_',num2str(subj),'_',num2str(session),'_post_',initials{subj-100},'_viz.txt']);
+        catch
+        end
+        
+        viz12 = loadjson([datadir,'Subj_',num2str(subj),'/session_1/data_',num2str(subj),'_1_pre_',initials{subj-100},'_sess2_viz.txt']);
+        data.viz.session_1 = viz12.session_1;
+        
         viz11 = loadjson([datadir,'Subj_',num2str(subj),'/session_1/data_',num2str(subj),'_1_pre_',initials{subj-100},'_viz.txt']);
         data.viz.session_1.pre.freeExplore.run_1 = viz11.session_1.pre.freeExplore.run_1;
         
@@ -173,6 +198,179 @@ switch subj
         data.value_rating       = post.data.value_rating;
         data.arena_similarity   = post.data.arena_similarity;
         data.arena_space        = post.data.arena_space;
+    
+    case 133
+        session = 3;
+        try
+            data.viz = loadjson([datadir,'Subj_',num2str(subj),'/session_',num2str(session),'/data_',num2str(subj),'_',num2str(session),'_post_',initials{subj-100},'_viz.txt']);
+        catch
+        end
+        
+        viz12 = loadjson([datadir,'Subj_133/session_1/data_133_1_pre_',initials{subj-100},'_sess2_viz.txt']);
+        data.viz.session_1 = viz12.session_1;
+        
+        viz11 = loadjson([datadir,'Subj_133/session_1/data_133_1_pre_',initials{subj-100},'_viz.txt']);
+        data.viz.session_1.pre.freeExplore.run_1 = viz11.session_1.pre.freeExplore.run_1;
+        
+        data.mat{2} = load([datadir,'Subj_',num2str(subj),'/session_2/data_',num2str(subj),'_2_',initials{subj-100},'.mat']);
+        data.mat{3} = load([datadir,'Subj_',num2str(subj),'/session_3/data_',num2str(subj),'_3_',initials{subj-100},'.mat']);
+        
+        post = load([datadir,'Subj_',num2str(subj),'/session_3/data_',num2str(subj),'_3_',initials{subj-100},'_postscan.mat']);
+        
+        data.likert             = post.data.likert;
+        data.value_rating       = post.data.value_rating;
+        data.arena_similarity   = post.data.arena_similarity;
+        data.arena_space        = post.data.arena_space;
+       
+    case 134
+        session = 3;
+        try
+            data.viz = loadjson([datadir,'Subj_',num2str(subj),'/session_',num2str(session),'/data_',num2str(subj),'_',num2str(session),'_post_',initials{subj-100},'_viz.txt']);
+        catch
+        end
+        
+        data.mat{2} = load([datadir,'Subj_',num2str(subj),'/session_2/data_',num2str(subj),'_2_',initials{subj-100},'_sess1.mat']);
+        data.mat{3} = load([datadir,'Subj_',num2str(subj),'/session_3/data_',num2str(subj),'_3_',initials{subj-100},'.mat']);
+        
+        post = load([datadir,'Subj_',num2str(subj),'/session_3/data_',num2str(subj),'_3_',initials{subj-100},'_postscan.mat']);
+        
+        data.likert             = post.data.likert;
+        data.value_rating       = post.data.value_rating;
+        data.arena_similarity   = post.data.arena;
+        
+    case 136
+        session = 2;
+        try
+            data.viz = loadjson([datadir,'Subj_',num2str(subj),'/session_',num2str(session),'/data_',num2str(subj),'_',num2str(session),'_post_',initials{subj-100},'_viz.txt']);
+        catch
+        end
+        
+        viz12 = loadjson([datadir,'Subj_',num2str(subj),'/session_1/data_',num2str(subj),'_1_pre_',initials{subj-100},'_sess2_viz.txt']);
+        data.viz.session_1 = viz12.session_1;
+        
+        viz11 = loadjson([datadir,'Subj_',num2str(subj),'/session_1/data_',num2str(subj),'_1_pre_',initials{subj-100},'_viz.txt']);
+        data.viz.session_1.pre.freeExplore.run_1 = viz11.session_1.pre.freeExplore.run_1;
+        
+        data.mat{2} = load([datadir,'Subj_',num2str(subj),'/session_2/data_',num2str(subj),'_2_',initials{subj-100},'.mat']);
+        
+    case 137
+        session = 2;
+        try
+            data.viz = loadjson([datadir,'Subj_',num2str(subj),'/session_',num2str(session),'/data_',num2str(subj),'_',num2str(session),'_post_',initials{subj-100},'_viz.txt']);
+        catch
+        end
+        
+        data.mat{2} = load([datadir,'Subj_',num2str(subj),'/session_2/data_',num2str(subj),'_2_',initials{subj-100},'.mat']);      
+    
+    
+    case 138
+        session = 2;
+        try
+            data.viz = loadjson([datadir,'Subj_',num2str(subj),'/session_',num2str(session),'/data_',num2str(subj),'_',num2str(session),'_post_',initials{subj-100},'_viz.txt']);
+        catch
+        end
+        
+        viz12 = loadjson([datadir,'Subj_',num2str(subj),'/session_1/data_',num2str(subj),'_1_pre_',initials{subj-100},'_sess2_viz.txt']);
+        data.viz.session_1 = viz12.session_1;
+        data.viz.session_1.pre.positionObject.run_4 = viz12.session_1.pre.positionObject.run_3;
+        data.viz.session_1.pre.positionObject.run_5 = viz12.session_1.pre.positionObject.run_4;
+        data.viz.session_1.pre.positionObject.run_6 = viz12.session_1.pre.positionObject.run_5;
+        data.viz.session_1.pre.freeExplore.run_4 = viz12.session_1.pre.freeExplore.run_3;
+        data.viz.session_1.pre.freeExplore.run_5 = viz12.session_1.pre.freeExplore.run_4;
+        data.viz.session_1.pre.freeExplore.run_6 = viz12.session_1.pre.freeExplore.run_5;
+        
+        data.mat{2} = load([datadir,'Subj_',num2str(subj),'/session_2/data_',num2str(subj),'_2_',initials{subj-100},'.mat']);
+           
+    case 140
+        session = 2;
+        try
+            data.viz = loadjson([datadir,'Subj_',num2str(subj),'/session_',num2str(session),'/data_',num2str(subj),'_',num2str(session),'_post_',initials{subj-100},'_viz.txt']);
+        catch
+        end
+        
+        viz11 = loadjson([datadir,'Subj_',num2str(subj),'/session_1/data_',num2str(subj),'_1_pre_',initials{subj-100},'_viz.txt']);
+        
+        viz13 = loadjson([datadir,'Subj_',num2str(subj),'/session_1/data_',num2str(subj),'_1_pre_',initials{subj-100},'_sess3_viz.txt']);
+        data.viz.session_1 = viz13.session_1;
+        data.viz.session_1.pre.freeExplore.run_1 = viz11.session_1.pre.freeExplore.run_1;
+        
+        data.mat{2} = load([datadir,'Subj_',num2str(subj),'/session_2/data_',num2str(subj),'_2_',initials{subj-100},'.mat']);
+        data.mat{3} = load([datadir,'Subj_',num2str(subj),'/session_3/data_',num2str(subj),'_3_',initials{subj-100},'.mat']);
+        
+        post = load([datadir,'Subj_',num2str(subj),'/session_3/data_',num2str(subj),'_3_',initials{subj-100},'_postscan.mat']);
+        
+        data.likert             = post.data.likert;
+        data.value_rating       = post.data.value_rating;
+        data.arena_similarity   = post.data.arena_similarity;
+        data.arena_space        = post.data.arena_space;
+        
+    case 143
+        disp('ACCIDENTALLY DELETED THIS BIT OF THE CODE. REDO IF YOU WANT TO RERUN 143');
+        
+    case 151
+        session = 2;
+        try
+            data.viz = loadjson([datadir,'Subj_',num2str(subj),'/session_',num2str(session),'/data_',num2str(subj),'_',num2str(session),'_post_',initials{subj-100},'_viz.txt']);
+        catch
+        end
+        
+        viz11 = loadjson([datadir,'Subj_',num2str(subj),'/session_1/data_',num2str(subj),'_1_pre_',initials{subj-100},'_viz.txt']);
+        viz12 = loadjson([datadir,'Subj_',num2str(subj),'/session_1/data_',num2str(subj),'_1_pre_',initials{subj-100},'_sess2_viz.txt']);
+        viz13 = loadjson([datadir,'Subj_',num2str(subj),'/session_1/data_',num2str(subj),'_1_pre_',initials{subj-100},'_sess3_viz.txt']);
+        
+        data.viz.session_1 = viz11.session_1;
+        
+        data.viz.session_1.pre.positionObject.run_2 = viz12.session_1.pre.positionObject.run_8;
+        data.viz.session_1.pre.positionObject.run_3 = viz12.session_1.pre.positionObject.run_9;        
+        data.viz.session_1.pre.freeExplore.run_2 = viz12.session_1.pre.freeExplore.run_8;
+        data.viz.session_1.pre.freeExplore.run_3 = viz12.session_1.pre.freeExplore.run_9;
+        
+        data.viz.session_1.pre.positionObject.run_4 = viz13.session_1.pre.positionObject.run_8;
+        data.viz.session_1.pre.positionObject.run_5 = viz13.session_1.pre.positionObject.run_9;        
+        data.viz.session_1.pre.positionObject.run_6 = viz13.session_1.pre.positionObject.run_10;
+        data.viz.session_1.pre.freeExplore.run_4 = viz13.session_1.pre.freeExplore.run_8;        
+        data.viz.session_1.pre.freeExplore.run_5 = viz13.session_1.pre.freeExplore.run_9;
+        data.viz.session_1.pre.freeExplore.run_6 = viz13.session_1.pre.freeExplore.run_10;
+        
+        data.mat{2} = load([datadir,'Subj_',num2str(subj),'/session_2/data_',num2str(subj),'_2_',initials{subj-100},'.mat']);
+        data.mat{3} = load([datadir,'Subj_',num2str(subj),'/session_3/data_',num2str(subj),'_3_',initials{subj-100},'.mat']);
+        
+        post = load([datadir,'Subj_',num2str(subj),'/session_3/data_',num2str(subj),'_3_',initials{subj-100},'_postscan.mat']);
+        
+        data.likert             = post.data.likert;
+        data.value_rating       = post.data.value_rating;
+        data.arena_similarity   = post.data.arena_similarity;
+        data.arena_space        = post.data.arena_space;
+    
+    case 152
+        session = 2;
+        try
+            data.viz = loadjson([datadir,'Subj_',num2str(subj),'/session_',num2str(session),'/data_',num2str(subj),'_',num2str(session),'_post_',initials{subj-100},'_viz.txt']);
+        catch
+        end
+        
+        viz11 = loadjson([datadir,'Subj_',num2str(subj),'/session_1/data_',num2str(subj),'_1_pre_',initials{subj-100},'_viz.txt']);
+        
+        viz12 = loadjson([datadir,'Subj_',num2str(subj),'/session_1/data_',num2str(subj),'_1_pre_',initials{subj-100},'_sess2_viz.txt']);
+        data.viz.session_1 = viz11.session_1;
+        data.viz.session_1.pre.positionObject.run_4 = viz12.session_1.pre.positionObject.run_3;
+        data.viz.session_1.pre.positionObject.run_5 = viz12.session_1.pre.positionObject.run_4;
+        data.viz.session_1.pre.positionObject.run_6 = viz12.session_1.pre.positionObject.run_5;
+        data.viz.session_1.pre.freeExplore.run_4 = viz12.session_1.pre.freeExplore.run_3;
+        data.viz.session_1.pre.freeExplore.run_5 = viz12.session_1.pre.freeExplore.run_4;
+        data.viz.session_1.pre.freeExplore.run_6 = viz12.session_1.pre.freeExplore.run_5;
+        
+        
+        data.mat{2} = load([datadir,'Subj_',num2str(subj),'/session_2/data_',num2str(subj),'_2_',initials{subj-100},'.mat']);
+        data.mat{3} = load([datadir,'Subj_',num2str(subj),'/session_3/data_',num2str(subj),'_3_',initials{subj-100},'.mat']);
+        
+        post = load([datadir,'Subj_',num2str(subj),'/session_3/data_',num2str(subj),'_3_',initials{subj-100},'_postscan.mat']);
+        
+        data.likert             = post.data.likert;
+        data.value_rating       = post.data.value_rating;
+        data.arena_similarity   = post.data.arena_similarity;
+        data.arena_space        = post.data.arena_space;
+      
         
     otherwise
         session = 3;
@@ -191,14 +389,17 @@ switch subj
         data.arena_similarity   = post.data.arena_similarity;
         data.arena_space        = post.data.arena_space;
       
-        
+        zzz
 end
 
 mkdir([savedir,'/subj_',num2str(subj)])
 save([savedir,'/subj_',num2str(subj),'/data_',num2str(subj)],'data')
 
 % Generate table with task-relevant data
-generate_task_events(subj);
+try
+    generate_task_events(subj);
+catch
+end
 
 
 for s = 101:subj

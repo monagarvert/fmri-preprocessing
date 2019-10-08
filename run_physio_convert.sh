@@ -1,15 +1,14 @@
 #!/bin/bash
 
-subj=125
+subj=152
 session=3
-physiofile=VAAT190705
-
+# physiofile=SSZX190919
 
 
 niidir=/data/p_02071/choice-maps/my_dataset
 
 mkdir ${niidir}/sub-${subj}/ses-${session}/physio
-scp /scr/mrincoming/PHYSLOGDATA/CHOICE_MAPS/${physiofile}/* ${niidir}/sub-${subj}/ses-${session}/physio
+# scp /scr/mrincoming/PHYSLOGDATA/CHOICE_MAPS/${physiofile}/* ${niidir}/sub-${subj}/ses-${session}/physio
 
 
 

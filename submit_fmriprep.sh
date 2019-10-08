@@ -4,11 +4,18 @@
 # Copyright (c) Mona Garvert 2019, MPI CBS
 
 
-for subj in {105..104} 
+for subj in {145..152};
 do
    	 	echo Subject $subj
 		
-		# remove directory so it doesn't generate + directories
+		# remove existing directories so it doesn't generate + directories
+		rm -rf /data/pt_02071/choice-maps/preprocessed_data/work/fmriprep_wf/single_subject_${subj}_wf 
+		rm -rf /data/pt_02071/choice-maps/preprocessed_data/work/reportlets/fmriprep/sub-${subj} 
+		rm -rf /data/pt_02071/choice-maps/preprocessed_data/freesurfer/sub-${subj}
+		rm -rf /data/pt_02071/choice-maps/preprocessed_data/sub-${subj}
+		rm -rf /data/pt_02071/choice-maps/preprocessed_data/fmriprep/sub-${subj}
+		rm -rf /data/pt_02071/choice-maps/preprocessed_data/fmriprep/sub-${subj}.html
+
 
 		mkdir -p /data/pt_02071/choice-maps/preprocessed_data/sub-${subj}/output
 		mkdir -p /data/pt_02071/choice-maps/preprocessed_data/sub-${subj}/scripts		
