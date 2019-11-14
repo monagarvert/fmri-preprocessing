@@ -4,7 +4,7 @@
 # Copyright (c) Mona Garvert 2019, MPI CBS
 
 
-for subj in {145..152};
+for subj in 104 117;
 do
    	 	echo Subject $subj
 		

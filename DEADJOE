@@ -1,0 +1,54 @@
+
+*** These modified files were found in JOE when it aborted on Tue Oct  8 13:35:59 2019
+*** JOE was aborted because the terminal closed
+
+*** File '/data/p_02071/choice-maps/scripts/preprocessing/.git/COMMIT_EDITMSG'
+include all participants
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# On branch master
+# Changes to be committed:
+#	modified:   Preprocessing procedure.docm
+#	deleted:    README.md
+#	modified:   combine_data.m
+#	modified:   convert_to_BIDS.sh
+#	new file:   convert_to_BIDS_bdb.sh
+#	new file:   create_confound_regressor.m
+#	modified:   generate_task_events.m
+#	modified:   run-preprocessing
+#	modified:   run_fmriprep.sh
+#	modified:   run_physio_convert.sh
+#	modified:   submit_fmriprep.sh
+#	new file:   ~$eprocessing procedure.docm
+#
+# Untracked files:
+#	.Rhistory
+#	._Preprocessing procedure.docm
+#	._convert_to_BIDS.sh
+#	._convert_to_BIDS_bdb.sh
+#	._run-preprocessing
+#	._run_fmriprep.sh
+#	._run_physio_convert.sh
+#	._submit_fmriprep.sh
+#	._~$eprocessing procedure.docm
+#	.~lock.Preprocessing procedure.docm#
+#	readme.md
+#
+
+*** File '(Unnamed)'
+includes all data
+:x!
+
+*** File '(Unnamed)'
+/data/tu_garvert_cloud/Projects/ManyMaps/many-maps/.git/COMMIT_EDITMSG
+/data/tu_garvert_cloud/Projects/ManyMaps/many-maps/.git/COMMIT_EDITMSG
+/data/tu_garvert_cloud/owncloud-gwdg/Projects/ManyMaps/many-maps/.git/COMMIT_EDITMSG
+/data/p_02071/choice-maps/scripts/preprocessing/.git/COMMIT_EDITMSG
+
+*** File '* Startup Log *'
+Processing '/etc/joe/editorrc'...
+Processing '/etc/joe/ftyperc'...
+Finished processing /etc/joe/ftyperc
+Finished processing /etc/joe/editorrc

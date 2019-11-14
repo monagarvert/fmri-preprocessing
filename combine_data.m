@@ -1,6 +1,6 @@
 % combine data
 clear all
-subj = 152;
+subj = 134;
 
 pc = 'linux';
 if strcmp(pc,'dell')
@@ -8,9 +8,16 @@ if strcmp(pc,'dell')
     datadir = 'C:/Users/mgarvert/ownCloudCBS/Projects/ChoiceMaps/experiment/version_scan/datafiles/';
     savedir = 'C:/Users/mgarvert/ownCloudCBS/Projects/ChoiceMaps/experiment/version_scan/datafiles/merged_data';
 else
-    addpath (genpath('/data/p_02071/choice-maps/scripts/matlab_scripts/jsonlab-1.5'))
+    addpath (genpath('/data/p_02071/choice-maps/scripts/p_02071/choice-maps/scripts/matlab_scripts/jsonlab-1.5'))
     datadir = '/data/g_gr_doeller-share/Experiments/Mona/ChoiceMaps/experiment/version_scan/datafiles/';
-    savedir = '/data/g_gr_doeller-share/Experiments/Mona/ChoiceMaps/experiment/version_scan/datafiles/merged_data';
+    savedir = '/data/g_gr_doeller-share/Experiments/Mona/ChoiceMaps/experiment/version_scan/datafiles/merged_data/';
+end
+
+matl = 'local';
+if strcmp(matl,'local')
+    prefix = '/Volumes/storageunified';
+else
+    prefix = '/data';
 end
 
 initials = {'tl','hw','jk','lp','km','sr','jh', 'tb', 'pq','mb','mh','lm','jp','nt','to','lu','ag','pk','ls','bs','cd','ao','lz','ei','av','cs','pm',...
@@ -237,6 +244,7 @@ switch subj
         data.likert             = post.data.likert;
         data.value_rating       = post.data.value_rating;
         data.arena_similarity   = post.data.arena;
+        data.arena_space        = post.data.arena_space;
         
     case 136
         session = 2;
@@ -308,7 +316,7 @@ switch subj
         disp('ACCIDENTALLY DELETED THIS BIT OF THE CODE. REDO IF YOU WANT TO RERUN 143');
         
     case 151
-        session = 2;
+        session = 3;
         try
             data.viz = loadjson([datadir,'Subj_',num2str(subj),'/session_',num2str(session),'/data_',num2str(subj),'_',num2str(session),'_post_',initials{subj-100},'_viz.txt']);
         catch
@@ -343,7 +351,7 @@ switch subj
         data.arena_space        = post.data.arena_space;
     
     case 152
-        session = 2;
+        session = 3;
         try
             data.viz = loadjson([datadir,'Subj_',num2str(subj),'/session_',num2str(session),'/data_',num2str(subj),'_',num2str(session),'_post_',initials{subj-100},'_viz.txt']);
         catch
@@ -389,7 +397,6 @@ switch subj
         data.arena_similarity   = post.data.arena_similarity;
         data.arena_space        = post.data.arena_space;
       
-        zzz
 end
 
 mkdir([savedir,'/subj_',num2str(subj)])
@@ -419,8 +426,8 @@ cd([datadir,'Subj_',num2str(subj)])
 
 % Analyse physiological data. IMPORTANT: Will only work after
 % convert_to_BIDS.sh has been completed for this subject!
-addpath(genpath('/data/p_02071/choice-maps/scripts/tapas'))
-cd (['/data/pt_02071/choice-maps/preprocessed_data/sub-',num2str(subj),'/scripts']);
+addpath(genpath([prefix,'/p_02071/choice-maps/scripts/tapas']))
+cd ([prefix,'/pt_02071/choice-maps/preprocessed_data/sub-',num2str(subj),'/scripts']);
 
 for session = 2:3
     run(['extract_physio_sub_',num2str(subj),'_ses_',num2str(session),'.m'])

@@ -4,55 +4,56 @@
 % (c) Mona Garvert 2019
 % MPI CBS
 clear all
+prefix = ['/Volumes/storageunified/'];
 
-for subj = 140:141
-%     
-%      c = {...
-%         'trans_x',...
-%         'trans_y',...
-%         'trans_z',...
-%         'rot_x',...
-%         'rot_y',...
-%         'rot_z'};
-%         
-%     disp(subj)
-%     for session = 2:3
-%         disp(session)
-%         
-%         for run = 1:3
-%             physio = dlmread(['/data/p_02071/choice-maps/my_dataset/sub-',num2str(subj),'/ses-',num2str(session),...
-%                 '/func/sub-',num2str(subj),'_ses-',num2str(session),'_task-object_run-0',num2str(run),'_physio.txt']);
-%             
-%             rp = [];
-%             confounds =  tdfread(['/data/pt_02071/choice-maps/preprocessed_data/fmriprep/sub-',num2str(subj),'/ses-',num2str(session),...
-%                 '/func/sub-',num2str(subj),'_ses-',num2str(session),'_task-object_run-0',num2str(run),'_desc-confounds_regressors.tsv']);
-%             
-%             for i = 1:length(c)
-%                 rp = [rp eval(['confounds.',c{i}])];
-%             end
-%             rp = [rp physio];
-%             dlmwrite(['/data/pt_02071/choice-maps/preprocessed_data/fmriprep/sub-',num2str(subj),'/ses-',num2str(session),'/func/sub-',num2str(subj),'_ses-',num2str(session),'_task-object_run-0',num2str(run),'_rp_physio.txt'],rp,'delimiter','\t','precision',3);
-%         end
-%     end
-%     
-%     physio = dlmread(['/data/p_02071/choice-maps/my_dataset/sub-',num2str(subj),'/ses-',num2str(session),...
-%         '/func/sub-',num2str(subj),'_ses-',num2str(session),'_task-choice_physio.txt']);
-%     
-%     rp = [];
-%     confounds =  tdfread(['/data/pt_02071/choice-maps/preprocessed_data/fmriprep/sub-',num2str(subj),'/ses-',num2str(session),...
-%         '/func/sub-',num2str(subj),'_ses-',num2str(session),'_task-choice_desc-confounds_regressors.tsv']);
-%     
-%     for i = 1:length(c)
-%         rp = [rp eval(['confounds.',c{i}])];
-%     end
-%     rp = [rp physio];
-%     dlmwrite(['/data/pt_02071/choice-maps/preprocessed_data/fmriprep/sub-',num2str(subj),'/ses-',num2str(session),'/func/sub-',num2str(subj),'_ses-',num2str(session),'_task-choice_rp_physio.txt'],rp,'delimiter','\t','precision',3);
-%     
+for subj = 117
+    
+     c = {...
+        'trans_x',...
+        'trans_y',...
+        'trans_z',...
+        'rot_x',...
+        'rot_y',...
+        'rot_z'};
+        
+    disp(subj)
+    for session = 2:3
+        disp(session)
+        
+        for run = 1:3
+            physio = dlmread([prefix,'p_02071/choice-maps/my_dataset/sub-',num2str(subj),'/ses-',num2str(session),...
+                '/func/sub-',num2str(subj),'_ses-',num2str(session),'_task-object_run-0',num2str(run),'_physio.txt']);
+            
+            rp = [];
+            confounds =  tdfread([prefix,'pt_02071/choice-maps/preprocessed_data/fmriprep/sub-',num2str(subj),'/ses-',num2str(session),...
+                '/func/sub-',num2str(subj),'_ses-',num2str(session),'_task-object_run-0',num2str(run),'_desc-confounds_regressors.tsv']);
+            
+            for i = 1:length(c)
+                rp = [rp eval(['confounds.',c{i}])];
+            end
+            rp = [rp physio];
+            dlmwrite([prefix,'p_02071/choice-maps/preprocessed_data/fmriprep/sub-',num2str(subj),'/ses-',num2str(session),'/func/sub-',num2str(subj),'_ses-',num2str(session),'_task-object_run-0',num2str(run),'_rp_physio.txt'],rp,'delimiter','\t','precision',3);
+        end
+    end
+    
+    physio = dlmread([prefix,'p_02071/choice-maps/my_dataset/sub-',num2str(subj),'/ses-',num2str(session),...
+        '/func/sub-',num2str(subj),'_ses-',num2str(session),'_task-choice_physio.txt']);
+    
+    rp = [];
+    confounds =  tdfread([prefix,'p_02071/choice-maps/preprocessed_data/fmriprep/sub-',num2str(subj),'/ses-',num2str(session),...
+        '/func/sub-',num2str(subj),'_ses-',num2str(session),'_task-choice_desc-confounds_regressors.tsv']);
+    
+    for i = 1:length(c)
+        rp = [rp eval(['confounds.',c{i}])];
+    end
+    rp = [rp physio];
+    dlmwrite([prefix,'p_02071/choice-maps/preprocessed_data/fmriprep/sub-',num2str(subj),'/ses-',num2str(session),'/func/sub-',num2str(subj),'_ses-',num2str(session),'_task-choice_rp_physio.txt'],rp,'delimiter','\t','precision',3);
+    
 
     
     % Extract data
     disp('%%%%%% unzipping nifti files %%%%%%%%')
-    datadir        	= '/data/pt_02071/choice-maps/preprocessed_data/fmriprep/sub-';
+    datadir        	= prefix,'p_02071/choice-maps/preprocessed_data/fmriprep/sub-';
     for session = 2:3
         for run = 1:3
             epi = [datadir,num2str(subj),'/ses-',num2str(session),'/func/sub-',num2str(subj),'_ses-',num2str(session),'_task-object_run-0',num2str(run),'_space-MNI152NLin6Asym_desc-preproc_bold'];
@@ -94,7 +95,7 @@ for subj = 140:141
     for session = 2:3
         for run = 1:3
             rp = [];
-            confounds =  tdfread(['/data/pt_02071/choice-maps/preprocessed_data/fmriprep/sub-',num2str(subj),'/ses-',num2str(session),...
+            confounds =  tdfread([prefix,'p_02071/choice-maps/preprocessed_data/fmriprep/sub-',num2str(subj),'/ses-',num2str(session),...
                 '/func/sub-',num2str(subj),'_ses-',num2str(session),'_task-object_run-0',num2str(run),'_desc-confounds_regressors.tsv']);
             
             for i = 2:length(confounds.framewise_displacement)
@@ -105,7 +106,7 @@ for subj = 140:141
                 rp = [rp eval(['confounds.',c{i}])];
             end
             
-            dlmwrite(['/data/pt_02071/choice-maps/preprocessed_data/fmriprep/sub-',num2str(subj),'/ses-',num2str(session),'/func/sub-',num2str(subj),'_ses-',num2str(session),'_task-object_run-0',num2str(run),'_rp.txt'],rp,'delimiter','\t','precision',3);
+            dlmwrite([prefix,'p_02071/choice-maps/preprocessed_data/fmriprep/sub-',num2str(subj),'/ses-',num2str(session),'/func/sub-',num2str(subj),'_ses-',num2str(session),'_task-object_run-0',num2str(run),'_rp.txt'],rp,'delimiter','\t','precision',3);
             
         end
     end
@@ -116,7 +117,7 @@ for subj = 140:141
     
     
     rp = [];
-    confounds =  tdfread(['/data/pt_02071/choice-maps/preprocessed_data/fmriprep/sub-',num2str(subj),'/ses-',num2str(session),...
+    confounds =  tdfread([prefix,'p_02071/choice-maps/preprocessed_data/fmriprep/sub-',num2str(subj),'/ses-',num2str(session),...
         '/func/sub-',num2str(subj),'_ses-',num2str(session),'_task-choice_desc-confounds_regressors.tsv']);
     
     for i = 2:length(confounds.framewise_displacement)
@@ -127,7 +128,7 @@ for subj = 140:141
         rp = [rp eval(['confounds.',c{i}])];
     end
     
-    dlmwrite(['/data/pt_02071/choice-maps/preprocessed_data/fmriprep/sub-',num2str(subj),'/ses-',num2str(session),'/func/sub-',num2str(subj),'_ses-',num2str(session),'_task-choice_rp.txt'],rp,'delimiter','\t','precision',3);
+    dlmwrite([prefix,'p_02071/choice-maps/preprocessed_data/fmriprep/sub-',num2str(subj),'/ses-',num2str(session),'/func/sub-',num2str(subj),'_ses-',num2str(session),'_task-choice_rp.txt'],rp,'delimiter','\t','precision',3);
     
     
 end

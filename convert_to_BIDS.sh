@@ -152,8 +152,7 @@ if (( $session == 2 )); then
     	cp "$entry" ../anat/sub-${subj}_ses-${session}_T1w.json
 	done
 else
-	cp ../../ses-2/anat/sub-${subj}_ses-2_T1w.nii.gz ../anat/sub-${subj}_ses-${session}_T1w.nii.gz
-	cp ../../ses-2/anat/sub-${subj}_ses-2_T1w.json ../anat/sub-${subj}_ses-${session}_T1w.json
+	
 fi
 
 ## Functional data
